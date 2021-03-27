@@ -1,5 +1,5 @@
 (function exportController(){
-    const ship = require('../src/Ship')
+    // const ship = require('../src/Ship')
     function Controller(ship){
         this.ship = ship,
         this.initialiseSea();
@@ -40,27 +40,26 @@
         const shipElement = document.querySelector('#ship');
         shipElement.style.top = `${portElement.offsetTop + 32}px`;
         shipElement.style.left = `${portElement.offsetLeft - 100}px`;
-        shipElement.appendChild(shipElement);
+        
     }
-    Controller.prototype.setSail = function setSail(){
+    
+        Controller.prototype.setSail = function () {
         const ship = this.ship
         const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
         const nextPortIndex = currentPortIndex + 1;
-        const nextPortElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
+        const nextPortElement = document.querySelector(`[data-port-index='${nextPortIndex}']`);
         const shipElement = document.querySelector('#ship');
         const sailInterval = setInterval(() => {
-            const shipLeft = parseInt(shipElement.style.left, 20);
-            if (shipLeft === (nextPortElement.left - 32)) {
+            const shipLeft = parseInt(shipElement.style.left, 10);
+            if (shipLeft === (nextPortElement.offsetLeft - 32)) {
                 ship.setSail();
                 ship.dock();
                 clearInterval(sailInterval);
             }
             shipElement.style.left = `${shipLeft + 1}px`;
         }, 20);
-        if(!nextPortElement){
-            return alert('End of the line!');
-        }
     }
+
 
     Controller.prototype.renderMessage = function renderMessage(message){
 
