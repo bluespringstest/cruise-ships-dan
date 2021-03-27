@@ -1,34 +1,38 @@
-const Port = require('../src/port');
+const Port = require('../src/Port');
+const Ship  = require('../src/Ship');
+const Itinerary = require('../src/Itinerary');
 
 describe('Port', () => {
-  it('can be instantiated', () => {
-    expect(new Port()).toBeInstanceOf(Object);
-  });
-
-  it('can add a ship', () => {
-    const port = new Port('Dover');
-    const ship = jest.fn();
-
-    port.addShip(ship);
-
-    expect(port.ships).toContain(ship);
-  });
-
-  it('can remove a ship', () => {
-    const port = new Port('Dover');
-    const titanic = jest.fn();
-    const queenMary = jest.fn();
-
-    port.addShip(titanic);
-    port.addShip(queenMary);
-    port.removeShip(queenMary);
-
-    expect(port.ships).toEqual([titanic]);
-  });
-
-  it('has a name', () => {
-    const port = new Port('Dover');
-
-    expect(port.name).toBe('Dover');
-  });
+    describe('with ships that have itineries', () => {
+        let calais;
+        let dover;
+        let ship;
+        let titanic;
+        let princeSolomon;
+        beforeEach(() => {
+            dover = new Port('Dover');
+            calais = new Port('Calais');
+            princeSolomon = new Port('Southampton');
+            itinerary = new Itinerary([dover]);
+            itinerary2 = new Itinerary([calais]);
+            ship = jest.fn();
+            titanic = new Ship(itinerary2)
+        });
+        it('can create a port', () => {
+            expect(new Port()).toBeInstanceOf(Object);
+        });
+        it('Ports have a name', () => {
+            expect(dover.name).toBe('Dover');
+        });
+        it('Adds a ship to port', () => {
+            dover.addShip(titanic);
+            expect(dover.ships).toContain(titanic);
+        });
+        it('Removes a ship from port', () => {
+            princeSolomon.addShip(ship);
+            princeSolomon.addShip(titanic);
+            princeSolomon.removeShip(titanic)
+            expect(princeSolomon.ships).toEqual([ship]);
+        });
+    });
 });

@@ -1,0 +1,19 @@
+{
+  "name": "cruise-ships-gui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluespringstest/GitHub.git"
+  },
+  "author": "daniel adele",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluespringstest/GitHub/issues"
+  },
+  "homepage": "https://github.com/bluespringstest/GitHub#readme"
+}

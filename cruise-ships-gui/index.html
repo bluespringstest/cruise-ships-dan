@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cruise Ships</title>
+</head>
+<body>
+    <div id="viewport">
+        <div id="ports"></div>
+        <div id="ship"></div>
+        <button id="sailbutton">Set Sail!</button>
+    </div>
+    <script src="../src/controller.js"></script> 
+    <script src="../src/Port.js"></script> 
+    <script src="../src/Itinerary.js"></script>
+    <script src="../src/Ship.js"></script> 
+    <script>
+    const controller = new Controller();
+    const itinerary = new Itinerary([
+            new Port('Portsmouth'),
+            new Port('Amsterdam'),
+            new Port('Calais'),
+            new Port('Crete'),
+        ]);
+    controller.renderPorts(itinerary.ports);
+    const ship = new Ship(itinerary);
+        controller.renderPorts(itinerary.ports);
+        controller.renderShip(itinerary.ship);
+    </script>  
+</body>
+</html>
