@@ -1,5 +1,4 @@
 (function exportController(){
-    // const ship = require('../src/Ship')
     function Controller(ship){
         this.ship = ship,
         this.initialiseSea();
@@ -42,7 +41,6 @@
         shipElement.style.left = `${portElement.offsetLeft - 100}px`;
         
     }
-    
         Controller.prototype.setSail = function () {
         const ship = this.ship
         const currentPortIndex = ship.itinerary.ports.indexOf(ship.currentPort);
